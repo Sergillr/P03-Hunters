@@ -12,13 +12,22 @@ From the repository root, run:
 
 Open hunter/target/reports/apidocs/index.html to browse the generated API documentation.
 
-## Current behavior
+## Password searches
 
-The entry point, com.example.App, currently has an empty run method. The search services can be called independently. AlphanumericHunter tests passwords beginning with c, followed by one character from aeioutr and
-four lowercase ASCII letters or digits. PinBreaker searches four-digit PINs from
-0000 through 9999 and can be called independently. The bundled exercise materials
-also describe two dictionary missions.
+The command-line entry point, com.example.App, currently has no configured search.
+The services can be called directly:
 
-Both search services resolve file paths relative to the Maven module, test each
-candidate with PDFBox, and report the accepted password, attempt count, and elapsed
-search time in whole milliseconds.
+- DictionaryAttack.breakDictionary(pdfPath, dictionaryPath) reads a UTF-8
+  dictionary one line at a time and tests each line in file order. Spaces and
+  blank lines are preserved as part of the candidate input. The search stops
+  at the first accepted entry. Pass a Path for the dictionary, for example
+  ProjectPaths.resolve("data/diccionari.txt").
+- AlphanumericHunter.breakAlphanumeric(pdfPath) tests candidates starting with
+  c, followed by one of aeioutr and four lowercase ASCII letters or digits.
+- PinBreaker.breakPin(pdfPath) tests four-digit PINs from 0000 through 9999.
+
+Pass each PDF path as a string relative to the Maven module. On success, the
+services return the accepted candidate, the number of attempts including the
+successful attempt, and the elapsed search time in whole milliseconds. They
+throw IllegalStateException when the candidate search is exhausted and
+UncheckedIOException when an I/O error prevents the search from completing.
