@@ -4,7 +4,6 @@ package com.example;
  * Entry point for the PDF Hunters application.
  */
 import com.example.utils.input.Menu;
-import com.example.utils.ui.Prettier;
 
 public class App {
     /** Creates the command-line application. */
@@ -29,8 +28,14 @@ public class App {
             int option = Menus.mainMenu();
 
             switch (option) {
-                case 1, 2, 3, 4, 5 -> {
-                    Prettier.info("La missió %d encara no està disponible.", option);
+                case 1 -> Menus.runPinBreaker();
+                case 2 -> Menus.runAlphanumericHunter();
+                case 3, 4 -> {
+                    Menus.showInfo("La missió %d encara no està disponible.", option);
+                    Menu.pause();
+                }
+                case 5 -> {
+                    Menus.showInfo("Les estadístiques encara no estan disponibles.");
                     Menu.pause();
                 }
                 case Menus.MAIN_EXIT_OPTION -> exit = true;
@@ -40,6 +45,6 @@ public class App {
             }
         }
 
-        Prettier.info("Fins aviat!");
+        Menus.showInfo("Fins aviat!");
     }
 }
