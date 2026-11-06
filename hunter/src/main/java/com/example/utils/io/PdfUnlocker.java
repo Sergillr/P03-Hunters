@@ -7,6 +7,9 @@ import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 
+/**
+ * Checks PDF password candidates with PDFBox and closes each document after opening it.
+ */
 public final class PdfUnlocker {
     private PdfUnlocker() {
     }

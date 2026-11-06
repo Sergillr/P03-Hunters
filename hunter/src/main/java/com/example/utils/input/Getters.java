@@ -11,6 +11,10 @@ import com.example.utils.ui.Prettier;
  * Console input helper that reads and validates typed values.
  */
 public final class Getters {
+    /** Creates input helpers that read from the shared standard input scanner. */
+    public Getters() {
+    }
+
 
     private final Scanner scanner = com.example.utils.input.Console.scanner();
     private boolean acceptCommaAsDecimalSeparator = false;
@@ -109,12 +113,12 @@ public final class Getters {
             text = scanner.nextLine().trim();
 
             if (text.isEmpty()) {
-                Prettier.warn("%s no pot estar en blanc. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s cannot be blank. Please try again.", name);
             } else if (text.length() < minLen || text.length() > maxLen) {
-                Prettier.warn("%s ha de tenir una longitud d'entre %d i %d caràcters. Si us plau, torni a intentar-ho.",
+                Prettier.warn("%s must be between %d and %d characters long. Please try again.",
                         name, minLen, maxLen);
             } else if (prohibiteds.contains(text)) {
-                Prettier.warn("%s no està disponible. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s is unavailable. Please try again.", name);
             } else {
                 loop = false;
             }
@@ -158,9 +162,9 @@ public final class Getters {
 
             boolean skip = true;
             if (input.isEmpty()) {
-                Prettier.warn("%s no pot estar en blanc. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s cannot be blank. Please try again.", name);
             } else if (!isInteger(input)) {
-                Prettier.warn("%s ha de ser un nombre enter. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s must be an integer. Please try again.", name);
             } else {
                 skip = false;
             }
@@ -176,7 +180,7 @@ public final class Getters {
             if (value >= min && value <= max) {
                 loop = false;
             } else {
-                Prettier.warn("%s ha d'estar entre %d i %d. Si us plau, torni a intentar-ho.", name, min, max);
+                Prettier.warn("%s must be between %d and %d. Please try again.", name, min, max);
                 pause();
                 System.out.println();
             }
@@ -218,9 +222,9 @@ public final class Getters {
 
             boolean skip = true;
             if (input.isEmpty()) {
-                Prettier.warn("%s no pot estar en blanc. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s cannot be blank. Please try again.", name);
             } else if (!isDouble(input)) {
-                Prettier.warn("%s ha de ser un nombre decimal. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s must be a decimal number. Please try again.", name);
             } else {
                 skip = false;
             }
@@ -236,7 +240,7 @@ public final class Getters {
             if (value >= min && value <= max) {
                 loop = false;
             } else {
-                Prettier.warn("%s ha d'estar entre %f i %f. Si us plau, torni a intentar-ho.", name, min, max);
+                Prettier.warn("%s must be between %f and %f. Please try again.", name, min, max);
                 pause();
                 System.out.println();
             }
@@ -275,9 +279,9 @@ public final class Getters {
 
             boolean skip = true;
             if (input.isEmpty()) {
-                Prettier.warn("%s no pot estar en blanc. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s cannot be blank. Please try again.", name);
             } else if (!isLong(input)) {
-                Prettier.warn("%s ha de ser un nombre enter (long). Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s must be a 64-bit integer. Please try again.", name);
             } else {
                 skip = false;
             }
@@ -293,7 +297,7 @@ public final class Getters {
             if (value >= min && value <= max) {
                 loop = false;
             } else {
-                Prettier.warn("%s ha d'estar entre %d i %d. Si us plau, torni a intentar-ho.", name, min, max);
+                Prettier.warn("%s must be between %d and %d. Please try again.", name, min, max);
                 pause();
                 System.out.println();
             }
@@ -330,7 +334,7 @@ public final class Getters {
                 result = false;
             } else {
                 stop = false;
-                Prettier.warn("Valor no vàlid. Escrigui \"%s\" o \"%s\" (o premi Enter per defecte).", trueText,
+                Prettier.warn("Invalid value. Enter \"%s\" or \"%s\", or press Enter to use the default.", trueText,
                         falseText);
                 pause();
                 System.out.println();
@@ -417,10 +421,10 @@ public final class Getters {
                 loop = false;
                 text = defaultValue;
             } else if (text.length() < minLen || text.length() > maxLen) {
-                Prettier.warn("%s ha de tenir una longitud d'entre %d i %d caràcters. Si us plau, torni a intentar-ho.",
+                Prettier.warn("%s must be between %d and %d characters long. Please try again.",
                         name, minLen, maxLen);
             } else if (prohibiteds.contains(text)) {
-                Prettier.warn("%s no està disponible. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s is unavailable. Please try again.", name);
             } else {
                 loop = false;
             }
@@ -524,10 +528,10 @@ public final class Getters {
                 loop = false;
                 text = "";
             } else if (text.length() < minLen || text.length() > maxLen) {
-                Prettier.warn("%s ha de tenir una longitud d'entre %d i %d caràcters. Si us plau, torni a intentar-ho.",
+                Prettier.warn("%s must be between %d and %d characters long. Please try again.",
                         name, minLen, maxLen);
             } else if (prohibiteds.contains(text)) {
-                Prettier.warn("%s no està disponible. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s is unavailable. Please try again.", name);
             } else {
                 loop = false;
             }
@@ -578,7 +582,7 @@ public final class Getters {
                 loop = false;
                 continue;
             } else if (!isInteger(input)) {
-                Prettier.warn("%s ha de ser un nombre enter. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s must be an integer. Please try again.", name);
             } else {
                 skip = false;
             }
@@ -594,7 +598,7 @@ public final class Getters {
             if (value >= min && value <= max) {
                 loop = false;
             } else {
-                Prettier.warn("%s ha d'estar entre %d i %d. Si us plau, torni a intentar-ho.", name, min, max);
+                Prettier.warn("%s must be between %d and %d. Please try again.", name, min, max);
                 pause();
                 System.out.println();
             }
@@ -643,7 +647,7 @@ public final class Getters {
                 loop = false;
                 continue;
             } else if (!isDouble(input)) {
-                Prettier.warn("%s ha de ser un nombre decimal. Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s must be a decimal number. Please try again.", name);
             } else {
                 skip = false;
             }
@@ -659,7 +663,7 @@ public final class Getters {
             if (value >= min && value <= max) {
                 loop = false;
             } else {
-                Prettier.warn("%s ha d'estar entre %f i %f. Si us plau, torni a intentar-ho.", name, min, max);
+                Prettier.warn("%s must be between %f and %f. Please try again.", name, min, max);
                 pause();
                 System.out.println();
             }
@@ -706,7 +710,7 @@ public final class Getters {
                 loop = false;
                 continue;
             } else if (!isLong(input)) {
-                Prettier.warn("%s ha de ser un nombre enter (long). Si us plau, torni a intentar-ho.", name);
+                Prettier.warn("%s must be a 64-bit integer. Please try again.", name);
             } else {
                 skip = false;
             }
@@ -722,7 +726,7 @@ public final class Getters {
             if (value >= min && value <= max) {
                 loop = false;
             } else {
-                Prettier.warn("%s ha d'estar entre %d i %d. Si us plau, torni a intentar-ho.", name, min, max);
+                Prettier.warn("%s must be between %d and %d. Please try again.", name, min, max);
                 pause();
                 System.out.println();
             }
@@ -758,7 +762,7 @@ public final class Getters {
                 result = false;
             } else {
                 stop = false;
-                Prettier.warn("Valor no vàlid. Escrigui \"%s\" o \"%s\" (o premi Enter per defecte).", trueText,
+                Prettier.warn("Invalid value. Enter \"%s\" or \"%s\", or press Enter to use the default.", trueText,
                         falseText);
                 pause();
                 System.out.println();

@@ -76,7 +76,7 @@ public final class Menu {
             printArr(options, gapsAfter);
             System.out.println();
 
-            System.out.print("Seleccioni una opció, si us plau: ");
+            System.out.print("Select an option: ");
             option = getInteger();
 
             if (option == -1) {
@@ -87,7 +87,7 @@ public final class Menu {
             if (option >= 1 && option <= options.size()) {
                 loop = false;
             } else {
-                Prettier.warn("L'opció introduïda ha de estar entre 1 i %d. Si us plau, torni a intentar-ho.",
+                Prettier.warn("Select an option between 1 and %d. Please try again.",
                         options.size());
                 pause();
             }
@@ -120,16 +120,16 @@ public final class Menu {
     private static int getInteger() {
         String input = scanner.nextLine().trim();
         if (input.isEmpty()) {
-            Prettier.warn("L'opció introduïda no pot estar en blanc. Si us plau, torni a intentar-ho.");
+            Prettier.warn("The option cannot be blank. Please try again.");
             return -1;
         }
 
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            Prettier.warn("L'opció introduïda ha de ser un nombre enter positiu. Si us plau, torni a intentar-ho.");
+            Prettier.warn("The option must be a positive integer. Please try again.");
         } catch (Exception e) {
-            Prettier.warn("Ha hagut un error. Si us plau, torni a intentar-ho.");
+            Prettier.warn("Could not read the option. Please try again.");
         }
 
         return -1;
@@ -139,7 +139,7 @@ public final class Menu {
      * Pauses execution until the user presses Enter.
      */
     public static void pause() {
-        System.out.print("Prem enter per continuar... ");
+        System.out.print("Press Enter to continue... ");
         scanner.nextLine();
     }
 }
