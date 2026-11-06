@@ -1,0 +1,15 @@
+PDF HUNTERS — MATERIALS DEL Grup_01
+
+Aquest paquet és exclusiu del vostre grup. No compartiu contrasenyes ni fitxers amb altres equips.
+
+Contingut:
+- 4 documents PDF protegits
+- diccionari.txt per a les missions 3 i 4
+
+Patrons coneguts:
+- Missió 1: PIN de 4 dígits.
+- Missió 2: c?NNNN; segona lletra a/e/i/o/u/t/r.
+- Missió 3: paraula continguda a diccionari.txt.
+- Missió 4: paraula del diccionari amb inicial majúscula i dos dígits finals.
+
+Feu servir els PDF només en aquesta activitat autoritzada.
