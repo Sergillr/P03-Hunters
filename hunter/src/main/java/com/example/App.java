@@ -30,10 +30,8 @@ public class App {
             switch (option) {
                 case 1 -> Menus.runPinBreaker();
                 case 2 -> Menus.runAlphanumericHunter();
-                case 3, 4 -> {
-                    Menus.showInfo("La missió %d encara no està disponible.", option);
-                    Menu.pause();
-                }
+                case 3 -> Menus.runDictionaryAttack();
+                case 4 -> Menus.runFinalBoss();
                 case 5 -> {
                     Menus.showInfo("Les estadístiques encara no estan disponibles.");
                     Menu.pause();

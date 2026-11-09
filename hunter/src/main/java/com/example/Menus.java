@@ -7,15 +7,19 @@ import static com.example.utils.ui.Ansi.RED;
 import static com.example.utils.ui.Ansi.RESET;
 import static com.example.utils.ui.Ansi.WHITE;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
 import com.example.models.UnlockResult;
 import com.example.services.AlphanumericHunter;
+import com.example.services.DictionaryAttack;
+import com.example.services.FinalBoss;
 import com.example.services.PinBreaker;
 import com.example.utils.input.Console;
 import com.example.utils.input.Menu;
+import com.example.utils.io.ProjectPaths;
 
 /**
  * Menús de l'aplicació.
@@ -39,6 +43,9 @@ public final class Menus {
 
     private static final String PIN_BREAKER_PDF = "data/01_caixa_forta.pdf";
     private static final String ALPHANUMERIC_PDF = "data/02_projecte_secret.pdf";
+    private static final String DICTIONARY_PDF = "data/03_contrasenya_director.pdf";
+    private static final String FINAL_BOSS_PDF = "data/04_arxiu_ultrasecret.pdf";
+    private static final String DICTIONARY_FILE = "data/diccionari.txt";
 
     /** Opció del menú principal que tanca l'aplicació. */
     public static final int MAIN_EXIT_OPTION = 6;
@@ -69,6 +76,25 @@ public final class Menus {
     public static void runAlphanumericHunter() {
         runMission("MISSIÓ 2 - ALPHANUMERIC HUNTER", ALPHANUMERIC_PDF,
                 AlphanumericHunter::breakAlphanumeric);
+    }
+
+    /**
+     * Executa la missió 3: prova les paraules del diccionari contra el PDF corresponent.
+     */
+    public static void runDictionaryAttack() {
+        Path dictionary = ProjectPaths.resolve(DICTIONARY_FILE);
+        runMission("MISSIÓ 3 - DICTIONARY ATTACK", DICTIONARY_PDF,
+                path -> DictionaryAttack.breakDictionary(path, dictionary));
+    }
+
+    /**
+     * Executa la missió 4: combina cada paraula del diccionari amb inicial
+     * majúscula i dos dígits finals.
+     */
+    public static void runFinalBoss() {
+        Path dictionary = ProjectPaths.resolve(DICTIONARY_FILE);
+        runMission("MISSIÓ 4 - FINAL BOSS", FINAL_BOSS_PDF,
+                path -> FinalBoss.breakFinalBoss(path, dictionary));
     }
 
     private static void runMission(String title, String path, Function<String, UnlockResult> search) {
